@@ -11,29 +11,29 @@ namespace Places.Controllers
     {
       return View();
     }
-    [HttpGet("/tasks")]
-    public ActionResult Tasks()
+    [HttpGet("/places")]
+    public ActionResult Places()
     {
-      List<Task> allTasks = Task.GetAll();
-      return View(allTasks);
+      List<Place> allPlaces = Place.GetAll();
+      return View(allPlaces);
     }
-    [HttpGet ("/tasks/new")]
-    public ActionResult TaskForm()
+    [HttpGet ("/places/new")]
+    public ActionResult PlaceForm()
     {
       return View();
     }
-    [HttpPost("/tasks")]
-    public ActionResult AddTask()
+    [HttpPost("/places")]
+    public ActionResult AddPlace()
     {
-      Task newTask = new Task(Request.Form["new-task"]);
-      List<Task> allTasks = Task.GetAll();
-      return View("Tasks", allTasks);
+      Place newPlace = new Place(Request.Form["cityName"], Request.Form["cityImage"]);
+      List<Place> allPlaces = Place.GetAll();
+      return View("Places", allPlaces);
     }
-    [HttpGet("/tasks/{id}")]
-    public ActionResult TaskDetail(int id)
+    [HttpGet("/places/{id}")]
+    public ActionResult PlaceDetail(int id)
     {
-      Task task = Task.Find(id);
-      return View(task);
+      Place place = Place.Find(id);
+      return View(place);
     }
   }
 }
